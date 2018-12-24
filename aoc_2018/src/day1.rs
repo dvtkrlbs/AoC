@@ -18,22 +18,6 @@ pub fn day1_part1_solve(input: &[i32]) -> i32 {
         .sum()
 }
 
-#[aoc(day1, part2, Vector)]
-pub fn day1_part2_solve_vec(input: &[i32]) -> i32 {
-    let mut lookup = Vec::new();
-    let mut freq = 0;
-
-    for num in input.iter().cycle() {
-        freq += num;
-        match lookup.contains(&freq) {
-                true => break,
-                false => lookup.push(freq),
-        };
-    }
-
-    freq
-}
-
 #[aoc(day1, part2, HashMap)]
 pub fn day1_part2_solve_hash_map(input: &[i32]) -> i32 {
     let mut lookup = HashMap::new();
