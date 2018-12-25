@@ -1,9 +1,33 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, BTreeMap};
 
 #[aoc(day2, part1, HashMap)]
 pub fn day2_part1_solve_hash(input: &str) -> i32 {
     let vec_of_str = input.split('\n').collect::<Vec<&str>>();
     let mut lookup = HashMap::new();
+    let mut twos = 0;
+    let mut threes = 0;
+    for id in vec_of_str.iter() {
+        for ch in id.chars() {
+            let entry = lookup.entry(ch).or_insert(0);
+            *entry += 1;
+        }
+        match lookup.values().find(|&&x| x == 2) {
+            Some(2) => twos += 1,
+            _ => (),
+        }
+        match lookup.values().find(|&&x| x == 3) {
+            Some(3) => threes += 1,
+            _ => (),
+        }
+        lookup.clear();
+    }
+    twos * threes
+}
+
+#[aoc(day2, part1, BTreeMap)]
+pub fn day2_part1_solve_btree(input: &str) -> i32 {
+    let vec_of_str = input.split('\n').collect::<Vec<&str>>();
+    let mut lookup = BTreeMap::new();
     let mut twos = 0;
     let mut threes = 0;
     for id in vec_of_str.iter() {
