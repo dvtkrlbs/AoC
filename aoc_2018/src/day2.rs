@@ -48,27 +48,31 @@ pub fn day2_part1_solve_btree(input: &str) -> i32 {
     twos * threes
 }
 
-
-// The solution of https://github.com/Erk-
-#[aoc(day2, part1, Erk)]
-pub fn day_part1_erk(input: &str) -> i32 {
+#[aoc(day2, part2)]
+pub fn day2_part2_naive(input: &str) -> String {
     let vec_of_str = input.split('\n').collect::<Vec<&str>>();
-    let mut twos = 0;
-    let mut threes = 0;
-    for id in vec_of_str.iter() {
-        let mut is2 = false;
-        let mut is3 = false;
-        for ch in id.chars() {
-            if is3 && is2 { continue; }
-            let count = id.matches(ch).count();
-            match count {
-                2 => is2 = true,
-                3 => is3 = true,
-                _ => (),
+    let mut result = String::new();
+
+    for first in &vec_of_str {
+        for second in &vec_of_str {
+            if first == second {
+                continue;
             }
-        } 
-        if is2 { twos += 1; }
-        if is3 { threes += 1; }
+
+            let mut differs = 0;
+            let mut posi: usize = 0;
+            for (pos, (c1, c2)) in first.chars().zip(second.chars()).enumerate() {
+                if c1 != c2 {
+                    differs += 1;
+                    posi = pos;
+                }
+            }
+
+            if differs == 1 {
+                result = String::from(first.clone());
+                result.remove(posi);
+            }
+        }
     }
-    (twos * threes)
+    result
 }
