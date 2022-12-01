@@ -1,0 +1,10 @@
+[package]
+name = "aoc_2022"
+version = "0.1.0"
+authors = ["Tunahan Karlibas <me@dvtkrlbs.me>"]
+edition = "2021"
+
+[dependencies]
+aoc-runner = "0.3.0"
+aoc-runner-derive = "0.3.0"
+itertools = "0.10.5"
