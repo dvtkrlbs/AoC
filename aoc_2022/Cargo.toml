@@ -8,5 +8,9 @@ edition = "2021"
 aoc-runner = "0.3.0"
 aoc-runner-derive = "0.3.0"
 atoi_radix10 = "0.0.1"
+btoi = "0.4.2"
 itertools = "0.10.5"
 rayon = "1.6.0"
+
+[profile.release]
+debug = true
