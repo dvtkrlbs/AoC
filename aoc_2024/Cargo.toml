@@ -11,6 +11,7 @@ name = "advent_of_code_2024"
 aoc-runner = "0.3.0"
 aoc-runner-derive = "0.3.0"
 bytes = "1.5.0"
+itertools = "0.13.0"
 
 # [bin]
 # name = "aoc-2023"
